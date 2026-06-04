@@ -1,6 +1,6 @@
 # 💬 Gemini AI Chatbot
 
-A modern, lightweight, and interactive web-based AI Chatbot built using **Streamlit** and powered by the **Google Gemini API** (using the `gemini-2.5-flash` model). This chatbot supports conversation memory (chat history) and real-time streaming-like user experience.
+A modern, lightweight, and interactive web-based AI Chatbot built using **Streamlit** and powered by the **Google Gemini API** (using the `gemini-1.5-flash` model). This chatbot supports conversation memory (chat history) and real-time streaming-like user experience.
 
 ---
 
@@ -11,7 +11,7 @@ A modern, lightweight, and interactive web-based AI Chatbot built using **Stream
 
 ## ✨ Features
 * 🧠 **Conversation Memory:** Remembers past messages in the current session so you can have back-and-forth conversations.
-* ⚡ **Fast & Responsive:** Utilizes `gemini-2.5-flash` for super-fast response generation.
+* ⚡ **Fast & Responsive:** Utilizes `gemini-1.5-flash` for super-fast response generation.
 * 🎨 **Clean UI:** Built with Streamlit's native chat elements for a clean and responsive messaging interface.
 * 🇱🇰 **Localizations:** Customized prompts and error descriptions in Sinhala.
 * 🛡️ **Robust Error Handling:** Detects API rate limits (HTTP 429) and displays clear instructions for the user.
@@ -20,7 +20,7 @@ A modern, lightweight, and interactive web-based AI Chatbot built using **Stream
 
 ## 🛠️ Tech Stack
 * **Framework:** [Streamlit](https://streamlit.io/)
-* **AI Model:** [Google Gemini API](https://ai.google.dev/) (`gemini-2.5-flash`)
+* **AI Model:** [Google Gemini API](https://ai.google.dev/) (`gemini-1.5-flash`)
 * **Environment Management:** `python-dotenv`
 
 ---
