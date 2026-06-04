@@ -1,5 +1,7 @@
 import streamlit as st
 import google.generativeai as genai
+for m in genai.list_models():
+    print(m.name)
 import os
 
 # 1. Attempt to get the API Key from Streamlit Secrets (for Cloud deployment)
