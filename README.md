@@ -5,7 +5,7 @@ A modern, lightweight, and interactive web-based AI Chatbot built using **Stream
 ---
 
 ## 🚀 Live Demo
-🌐 **[View Live Demo](https://your-live-demo-link.streamlit.app)** *(Replace this URL with your actual deployed Streamlit Cloud URL)*
+🌐 **[View Live Demo](https://nova-ai-chatbot.streamlit.app/)** 
 
 ---
 
