@@ -1,4 +1,4 @@
-# 💬 Gemini AI Chatbot
+# 💬 Nova Chat
 
 A modern, lightweight, and interactive web-based AI Chatbot built using **Streamlit** and powered by the **Google Gemini API** (using the `gemini-1.5-flash` model). This chatbot supports conversation memory (chat history) and real-time streaming-like user experience.
 

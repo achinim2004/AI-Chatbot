@@ -8,8 +8,8 @@ load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 
 # Configure the Streamlit page
-st.set_page_config(page_title="Gemini Chatbot", page_icon="💬")
-st.title("💬 My Gemini Chatbot")
+st.set_page_config(page_title="Nova Chat", page_icon="💬")
+st.title("💬 Nova Chat")
 
 # Model Setup
 if api_key:
