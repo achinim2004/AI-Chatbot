@@ -3,41 +3,44 @@ import google.generativeai as genai
 import os
 from dotenv import load_dotenv
 
-# Load environment variables
+# Load API Key
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 
-# Page configuration
+# Page Config
 st.set_page_config(page_title="Gemini Chatbot", page_icon="💬")
 st.title("💬 My Gemini Chatbot")
-st.write("API Key Loaded:", bool(api_key))
 
-# Model setup
+# Setup Model
 if api_key:
     genai.configure(api_key=api_key)
-    # Using 1.5-flash as it is more stable for free tier
     model = genai.GenerativeModel("gemini-1.5-flash")
 else:
     st.error("API Key not found in .env file!")
+    st.stop()
 
-# Initialize chat history
-if "messages" not in st.session_state:
-    st.session_state.messages = []
+# Initialize Chat Session (Memory)
+if "chat" not in st.session_state:
+    st.session_state.chat = model.start_chat(history=[])
 
-# Display chat messages from history
-for msg in st.session_state.messages:
-    st.chat_message(msg["role"]).markdown(msg["content"])
+# Display Chat History
+for msg in st.session_state.chat.history:
+    st.chat_message(msg.role).markdown(msg.parts[0].text)
 
-# React to user input
-if prompt := st.chat_input("How can I help you today?"):
+# User Input
+if prompt := st.chat_input("Monawada ahanne?"):
     st.chat_message("user").markdown(prompt)
-    st.session_state.messages.append({"role": "user", "content": prompt})
 
-    # Get AI response
+    # Get AI Response
     try:
-        response = model.generate_content(prompt)
+        with st.spinner("Gemini hithamin inne..."):
+            response = st.session_state.chat.send_message(prompt)
+            
         with st.chat_message("assistant"):
             st.markdown(response.text)
-        st.session_state.messages.append({"role": "assistant", "content": response.text})
+            
     except Exception as e:
-        st.error(f"An error occurred: {e}")
+        if "429" in str(e):
+            st.error("Quota error: API key limit eka panala. Tikak wela idala aye try karanna!")
+        else:
+            st.error(f"Error ekak awa: {e}")
