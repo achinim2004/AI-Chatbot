@@ -10,6 +10,7 @@ api_key = os.getenv("GEMINI_API_KEY")
 # Page configuration
 st.set_page_config(page_title="Gemini Chatbot", page_icon="💬")
 st.title("💬 My Gemini Chatbot")
+st.write("API Key Loaded:", bool(api_key))
 
 # Model setup
 if api_key:
