@@ -1,6 +1,6 @@
 # 💬 Nova Chat
 
-A modern, lightweight, and interactive web-based AI Chatbot built using **Streamlit** and powered by the **Google Gemini API** (using the `gemini-1.5-flash` model). This chatbot supports conversation memory (chat history) and real-time streaming-like user experience.
+A modern, lightweight, and interactive web-based AI Chatbot built using **Streamlit** and powered by the **Groq API** (using the `llama-3.3-70b-versatile` model). This chatbot supports conversation memory (chat history) and real-time streaming-like user experience.
 
 ---
 
@@ -11,16 +11,16 @@ A modern, lightweight, and interactive web-based AI Chatbot built using **Stream
 
 ## ✨ Features
 * 🧠 **Conversation Memory:** Remembers past messages in the current session so you can have back-and-forth conversations.
-* ⚡ **Fast & Responsive:** Utilizes `gemini-1.5-flash` for super-fast response generation.
+* ⚡ **Fast & Responsive:** Utilizes Groq for lightning-fast response generation.
 * 🎨 **Clean UI:** Built with Streamlit's native chat elements for a clean and responsive messaging interface.
-* 🇱🇰 **Localizations:** Customized prompts and error descriptions in Sinhala.
 * 🛡️ **Robust Error Handling:** Detects API rate limits (HTTP 429) and displays clear instructions for the user.
+* 🔑 **Authentication Flexibility:** Allows using a default backend key or inputting your own key securely from the app interface.
 
 ---
 
 ## 🛠️ Tech Stack
 * **Framework:** [Streamlit](https://streamlit.io/)
-* **AI Model:** [Google Gemini API](https://ai.google.dev/) (`gemini-1.5-flash`)
+* **AI Model:** [Groq API](https://console.groq.com/) (`llama-3.3-70b-versatile`)
 * **Environment Management:** `python-dotenv`
 
 ---
@@ -56,9 +56,9 @@ pip install -r requirements.txt
 ```
 
 ### 4. Configure Environment Variables
-Create a `.env` file in the root directory (already done for this project) and add your Google Gemini API key:
+Create a `.env` file in the root directory (already done for this project) and add your Groq API key:
 ```env
-GEMINI_API_KEY=your_actual_api_key_here
+GROQ_API_KEY=your_actual_api_key_here
 ```
 > ⚠️ **Important:** Do not commit your `.env` file containing your API key to public repositories. Make sure it is added to your `.gitignore`.
 
