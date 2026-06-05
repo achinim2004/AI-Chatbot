@@ -4,10 +4,9 @@ A modern, lightweight, and interactive web-based AI Chatbot built using **Stream
 
 ### 📸 App Preview
 
-| 🔑 API Selection | 💬 Chat Interface | ⚙️ Sidebar Controls |
-| :---: | :---: | :---: |
-| ![API Selection](assets/screenshot1.png) | ![Chat Interface](assets/screenshot2.png) | ![Sidebar Controls](assets/screenshot3.png) |
-
+| 🔑 API Selection | 💬 Chat Interface |
+| :---: | :---: |
+| ![API Selection](assets/screenshot2.png) | ![Chat Interface](assets/screenshot1.png) |
 ---
 
 ## 🚀 Live Demo
