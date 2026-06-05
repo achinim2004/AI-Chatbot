@@ -3,6 +3,14 @@ from groq import Groq
 import os
 
 def get_groq_client():
+    # If client is already set, display "Change API" button in sidebar and return client
+    if "groq_client" in st.session_state and st.session_state.groq_client is not None:
+        if st.sidebar.button("Reset / Change API Key"):
+            st.session_state.groq_client = None
+            st.session_state.messages = []  # Reset messages for privacy
+            st.rerun()
+        return st.session_state.groq_client
+
     # 1. Attempt to get the backend API Key from Streamlit Secrets or .env (default for free trial)
     backend_key = None
     try:
@@ -16,30 +24,32 @@ def get_groq_client():
         load_dotenv()
         backend_key = os.getenv("GROQ_API_KEY")
 
-    # Render selector in sidebar
-    st.sidebar.title("API Configuration")
-    api_choice = st.sidebar.radio(
-        "Choose your API option:",
-        ["Try Free Trial", "Use Your Own Groq API Key"]
+    # Render selector on the main page
+    st.subheader("Select an API option to begin:")
+    api_choice = st.radio(
+        "Option:",
+        ["Try Free Trial", "Use Your Own Groq API Key"],
+        label_visibility="collapsed"
     )
 
-    api_key = None
-
     if api_choice == "Use Your Own Groq API Key":
-        # Text input field for user's key
-        user_key = st.sidebar.text_input("Enter your Groq API Key:", type="password")
-        if user_key:
-            api_key = user_key
+        user_key = st.text_input("Enter your Groq API Key:", type="password")
+        submit_button = st.button("Submit Key")
+        
+        if submit_button and user_key:
+            st.session_state.groq_client = Groq(api_key=user_key)
+            st.rerun()
         else:
-            st.sidebar.warning("Please enter your Groq API Key to proceed.")
-            st.stop()
+            st.stop()  # Wait for user input
     else:
-        # Fallback to the developer's backend key for Free Trial
-        if backend_key:
-            api_key = backend_key
+        # Free Trial Option
+        submit_button = st.button("Start Chatting (Free Trial)")
+        if submit_button:
+            if backend_key:
+                st.session_state.groq_client = Groq(api_key=backend_key)
+                st.rerun()
+            else:
+                st.error("Free trial key is not configured. Please enter your own API key.")
+                st.stop()
         else:
-            st.sidebar.error("Free trial key is not configured. Please enter your own API key.")
-            st.stop()
-
-    # Return the initialized Groq client
-    return Groq(api_key=api_key)
+            st.stop()  # Wait for user to click the start button
