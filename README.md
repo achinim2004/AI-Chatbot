@@ -32,7 +32,7 @@ Follow these steps to run the project locally on your machine:
 ### 1. Clone or Open the Directory
 Navigate to your project folder:
 ```bash
-cd d:/Web_Projects/AI_Chatbot
+cd AI_Chatbot
 ```
 
 ### 2. Set Up a Virtual Environment (Optional but Recommended)
