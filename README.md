@@ -2,6 +2,12 @@
 
 A modern, lightweight, and interactive web-based AI Chatbot built using **Streamlit** and powered by the **Groq API** (using the `llama-3.3-70b-versatile` model). This chatbot supports conversation memory (chat history) and real-time streaming-like user experience.
 
+### 📸 App Preview
+
+| 🔑 API Selection | 💬 Chat Interface | ⚙️ Sidebar Controls |
+| :---: | :---: | :---: |
+| ![API Selection](assets/screenshot1.png) | ![Chat Interface](assets/screenshot2.png) | ![Sidebar Controls](assets/screenshot3.png) |
+
 ---
 
 ## 🚀 Live Demo
