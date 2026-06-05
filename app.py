@@ -1,32 +1,12 @@
 import streamlit as st
-from groq import Groq
-import os
-
-# 1. Attempt to get the API Key from Streamlit Secrets (for Cloud deployment)
-# 2. If not found, fall back to .env file (for local development)
-api_key = None
-try:
-    if "GROQ_API_KEY" in st.secrets:
-        api_key = st.secrets["GROQ_API_KEY"]
-except Exception:
-    pass
-
-if not api_key:
-    from dotenv import load_dotenv
-    load_dotenv()
-    api_key = os.getenv("GROQ_API_KEY")
+from api_selector import get_groq_client
 
 # Configure the Streamlit page layout
 st.set_page_config(page_title="Nova Chat", page_icon="💬")
 st.title("💬 Nova Chat")
 
 # Initialize the Groq client
-if api_key:
-    client = Groq(api_key=api_key)
-else:
-    # Error message if the API key is not configured anywhere
-    st.error("Groq API Key not found! Please check your Secrets or .env file.")
-    st.stop()
+client = get_groq_client()
 
 # Initialize chat history to store messages
 if "messages" not in st.session_state:
